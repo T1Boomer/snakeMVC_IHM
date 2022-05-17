@@ -9,7 +9,7 @@ public class Constantes {
     public final static int WIDTH_GRID = NOMBRE_COLONNES*TAILLE_CASE;
     public final static int HEIGHT_GRID = NOMBRE_LIGNES*TAILLE_CASE;
     public enum Direction {
-        HAUT, BAS, GAUCHE, DROITE
+        UP,DOWN,RIGHT,LEFT
     }
 
 }

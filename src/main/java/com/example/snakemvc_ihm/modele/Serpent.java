@@ -88,22 +88,22 @@ public class Serpent {
     public boolean future_position(String direction){
         switch (direction){
             case "UP":
-                if (tete.getY() - 1 > 0 && tete.getY() - 1 >= Constantes.NOMBRE_LIGNES){
+                if (tete.getY() - 1 < 0 || tete.getY() - 1 > Constantes.NOMBRE_LIGNES || grille[tete.getY() - 1][tete.getX()] == 2){
                     return false;
                 }
                 break;
             case "DOWN":
-                if (tete.getY() + 1 > 0 && tete.getY() + 1 >= Constantes.NOMBRE_LIGNES){
+                if (tete.getY() + 1 < 0 || tete.getY() + 1 >= Constantes.NOMBRE_LIGNES || grille[tete.getY() + 1][tete.getX()] == 2){
                     return false;
                 }
                 break;
             case "LEFT":
-                if (tete.getX() - 1 > 0 && tete.getX() - 1 >= Constantes.NOMBRE_LIGNES){
+                if (tete.getX() - 1 < 0 || tete.getX() - 1 > Constantes.NOMBRE_COLONNES || grille[tete.getY()][tete.getX() - 1] == 2){
                     return false;
                 }
                 break;
             case "RIGHT":
-                if (tete.getX() + 1 > 0 && tete.getX() + 1 >= Constantes.NOMBRE_LIGNES){
+                if (tete.getX() + 1 < 0 || tete.getX() + 1 >= Constantes.NOMBRE_COLONNES || grille[tete.getY()][tete.getX() + 1] == 2){
                     return false;
                 }
                 break;
