@@ -6,6 +6,8 @@ import com.example.snakemvc_ihm.vue.VueGraphique;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
+import java.util.Random;
+
 public class ControleurClavier implements EventHandler<KeyEvent> {
     private Serpent modele;
     private VueGraphique vueGraphique;
