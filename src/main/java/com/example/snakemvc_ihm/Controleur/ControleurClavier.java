@@ -3,8 +3,11 @@ package com.example.snakemvc_ihm.Controleur;
 import com.example.snakemvc_ihm.Constantes;
 import com.example.snakemvc_ihm.modele.Serpent;
 import com.example.snakemvc_ihm.vue.VueGraphique;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+
+import java.util.Random;
 
 public class ControleurClavier implements EventHandler<KeyEvent> {
     private Serpent modele;
@@ -19,22 +22,27 @@ public class ControleurClavier implements EventHandler<KeyEvent> {
     public void handle(KeyEvent keyEvent) {
         switch (keyEvent.getCode()){
             case Z:
-                modele.deplacement(String.valueOf(Constantes.Direction.HAUT));
+                modele.deplacement(String.valueOf(Constantes.Direction.UP));
                 vueGraphique.update();
-                System.out.println(String.valueOf(Constantes.Direction.HAUT));
                 break;
             case S:
-                modele.deplacement(String.valueOf(Constantes.Direction.BAS));
+                modele.deplacement(String.valueOf(Constantes.Direction.DOWN));
                 vueGraphique.update();
                 break;
             case D:
-                modele.deplacement(String.valueOf(Constantes.Direction.DROITE));
+                modele.deplacement(String.valueOf(Constantes.Direction.RIGHT));
                 vueGraphique.update();
                 break;
             case Q:
-                modele.deplacement(String.valueOf(Constantes.Direction.GAUCHE));
+                modele.deplacement(String.valueOf(Constantes.Direction.LEFT));
                 vueGraphique.update();
                 break;
+            case R:
+                vueGraphique.newVueGraphique();
+                break;
+            case ESCAPE:
+                Platform.exit();
+
         }
     }
 }

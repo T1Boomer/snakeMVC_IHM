@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+
         Serpent serpent = new Serpent();
         VueGraphique root = new VueGraphique(serpent);
         Scene scene = new Scene(root);
