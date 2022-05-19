@@ -19,7 +19,13 @@ public class VueGraphique extends GridPane {
 
     }
 
-
+    public void removeGrille(){
+        for (int i = 0; i < modele.getGrille().length; i++) {
+            for (int j = 0; j < modele.getGrille()[i].length; j++) {
+                rectangles[i][j].setFill(Color.WHITE);
+            }
+        }
+    }
 
     public void initGrille(){
         Rectangle rect;

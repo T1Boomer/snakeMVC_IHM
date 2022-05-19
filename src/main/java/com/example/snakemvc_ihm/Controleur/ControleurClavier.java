@@ -36,6 +36,12 @@ public class ControleurClavier implements EventHandler<KeyEvent> {
                 modele.deplacement(String.valueOf(Constantes.Direction.LEFT));
                 vueGraphique.update();
                 break;
+            case R:
+                vueGraphique.removeGrille();
+                modele = new Serpent();
+                vueGraphique = new VueGraphique(modele);
+
+                break;
         }
     }
 }

@@ -16,6 +16,7 @@ public class Serpent {
     public Serpent(){
         this.direction = "DOWN";
         estFini = false;
+        this.murs = new ArrayList<>();
         initGrille();
         setSnake();
         addMurs(10);
@@ -42,7 +43,6 @@ public class Serpent {
     }
 
     public void addMurs(int taille){
-        murs = new ArrayList<>(taille);
         Random random = new Random();
         boolean arret = false;
         Position posMurs = new Position(random.nextInt(Constantes.NOMBRE_COLONNES), random.nextInt(Constantes.NOMBRE_LIGNES));
