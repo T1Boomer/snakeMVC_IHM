@@ -49,8 +49,10 @@ public class VueGraphique extends GridPane {
         rectangles[modele.getSnake().get(0).getY()][modele.getSnake().get(0).getX()].setFill(Color.RED);
         rectangles[modele.getSnake().get(0).getY()][modele.getSnake().get(0).getX()].setStroke(Color.DARKRED);
         for (int i = 1; i < modele.getSnake().size(); i++) {
-            rectangles[modele.getSnake().get(0).getY()][modele.getSnake().get(0).getX()].setFill(Color.ORANGE);
-            rectangles[modele.getSnake().get(0).getY()][modele.getSnake().get(0).getX()].setStroke(Color.DARKORANGE);
+            rectangles[modele.getSnake().get(i).getY()][modele.getSnake().get(i).getX()].setFill(Color.ORANGE);
+            rectangles[modele.getSnake().get(i).getY()][modele.getSnake().get(i).getX()].setStroke(Color.DARKORANGE);
         }
+        rectangles[modele.getSnake().get(modele.getSnake().size()-1).getY()][modele.getSnake().get(modele.getSnake().size()-1).getX()].setFill(Color.GREEN);
+        rectangles[modele.getSnake().get(modele.getSnake().size()-1).getY()][modele.getSnake().get(modele.getSnake().size()-1).getX()].setStroke(Color.BLACK);
     }
 }

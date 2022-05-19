@@ -68,16 +68,16 @@ public class Serpent {
                 snake.set(i, new Position(snake.get(i - 1).getX(), snake.get(i - 1).getY()));
             }
             switch (direction) {
-                case "UP":
+                case "HAUT":
                     tete.setY(tete.getY() - 1);
                     break;
-                case "DOWN":
+                case "BAS":
                     tete.setY(tete.getY() + 1);
                     break;
-                case "LEFT":
+                case "GAUCHE":
                     tete.setX(tete.getX() - 1);
                     break;
-                case "RIGHT":
+                case "DROITE":
                     tete.setX(tete.getX() + 1);
                     break;
             }
@@ -87,28 +87,28 @@ public class Serpent {
 
     public boolean future_position(String direction){
         switch (direction){
-            case "UP":
-                if (tete.getY() - 1 > 0 && tete.getY() - 1 >= Constantes.NOMBRE_LIGNES){
+            case "HAUT":
+                if (tete.getY() - 1 < 0 || tete.getY() - 1 > Constantes.NOMBRE_LIGNES){
                     return false;
                 }
                 break;
-            case "DOWN":
-                if (tete.getY() + 1 > 0 && tete.getY() + 1 >= Constantes.NOMBRE_LIGNES){
+            case "BAS":
+                if (tete.getY() + 1 < 0 || tete.getY() + 1 > Constantes.NOMBRE_LIGNES){
                     return false;
                 }
                 break;
-            case "LEFT":
-                if (tete.getX() - 1 > 0 && tete.getX() - 1 >= Constantes.NOMBRE_LIGNES){
+            case "GAUCHE":
+                if (tete.getX() - 1 < 0 || tete.getX() - 1 > Constantes.NOMBRE_COLONNES){
                     return false;
                 }
                 break;
-            case "RIGHT":
-                if (tete.getX() + 1 > 0 && tete.getX() + 1 >= Constantes.NOMBRE_LIGNES){
+            case "DROITE":
+                if (tete.getX() + 1 < 0 || tete.getX() + 1 > Constantes.NOMBRE_COLONNES){
                     return false;
                 }
                 break;
             default:
-                return false;
+                return true;
         }
         return true;
     }

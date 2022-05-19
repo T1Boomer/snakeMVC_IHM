@@ -1,5 +1,6 @@
 package com.example.snakemvc_ihm;
 
+import com.example.snakemvc_ihm.Controleur.ControleurClavier;
 import com.example.snakemvc_ihm.modele.Serpent;
 import com.example.snakemvc_ihm.vue.VueGraphique;
 import javafx.application.Application;
@@ -12,6 +13,7 @@ public class App extends Application {
         Serpent serpent = new Serpent();
         VueGraphique root = new VueGraphique(serpent);
         Scene scene = new Scene(root);
+        scene.setOnKeyPressed(new ControleurClavier(serpent,root));
         stage.setScene(scene);
         stage.show();
     }

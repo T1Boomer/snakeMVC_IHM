@@ -13,7 +13,7 @@ public class Jeu {
         System.out.println(serpent);
         while (true){
             String s = sc.nextLine();
-            serpent.deplacement(s, Constantes.TAILLE_SNAKE);
+            serpent.deplacement(s);
             System.out.println(serpent);
             for (int i = 0; i < Constantes.TAILLE_SNAKE; i++) {
                 System.out.println(serpent.getSnake().get(i).getX() + "" + serpent.getSnake().get(i).getY());
