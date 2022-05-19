@@ -12,6 +12,7 @@ public class VueGraphique extends GridPane {
 
     public VueGraphique(Serpent modele) {
         super();
+
         this.modele = modele;
         initGrille();
         update();
@@ -32,7 +33,7 @@ public class VueGraphique extends GridPane {
         this.rectangles = new Rectangle[Constantes.NOMBRE_LIGNES][Constantes.NOMBRE_COLONNES];
         for (int i = 0; i < Constantes.NOMBRE_LIGNES; i++) {
             for (int j = 0; j < Constantes.NOMBRE_COLONNES; j++) {
-                rect = new Rectangle(j*Constantes.TAILLE_CASE,i*Constantes.TAILLE_CASE,Constantes.TAILLE_CASE,Constantes.TAILLE_CASE);
+                rect = new Rectangle(Constantes.TAILLE_CASE,Constantes.TAILLE_CASE);
                 super.add(rect,j,i);
                 rectangles[i][j] = rect;
             }
@@ -74,7 +75,5 @@ public class VueGraphique extends GridPane {
                 }
             }
         }
-        rectangles[modele.getSnake().get(modele.getSnake().size()-1).getY()][modele.getSnake().get(modele.getSnake().size()-1).getX()].setFill(Color.GREEN);
-        rectangles[modele.getSnake().get(modele.getSnake().size()-1).getY()][modele.getSnake().get(modele.getSnake().size()-1).getX()].setStroke(Color.BLACK);
     }
 }

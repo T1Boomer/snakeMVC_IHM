@@ -3,11 +3,12 @@ package com.example.snakemvc_ihm.modele;
 import com.example.snakemvc_ihm.Constantes;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Serpent {
     private ArrayList<Position> snake;
-    private ArrayList<Position> murs;
+    private ArrayList<Position> murs = new ArrayList<>();
     private Position apple;
     private int[][] grille;
     private Position tete;
@@ -16,7 +17,6 @@ public class Serpent {
     public Serpent(){
         this.direction = "DOWN";
         estFini = false;
-        this.murs = new ArrayList<>();
         initGrille();
         setSnake();
         addMurs(10);
@@ -53,7 +53,6 @@ public class Serpent {
 
     public void addMurs(int taille){
         Random random = new Random();
-        boolean arret = false;
         Position posMurs = new Position(random.nextInt(Constantes.NOMBRE_COLONNES), random.nextInt(Constantes.NOMBRE_LIGNES));
         for (int i = 0; i < taille; i++) {
             while (grille[posMurs.getY()][posMurs.getX()] == 1 || grille[posMurs.getY()][posMurs.getX()] == 2 || grille[posMurs.getY()][posMurs.getX()] == 3 ){
@@ -81,8 +80,9 @@ public class Serpent {
         apple = posApple;
     }
     public void deplacement(String direction) {
+        grille[snake.get(snake.size() - 1).getY()][snake.get(snake.size() - 1).getX()] = 0;
         if (future_position(direction) && !estFini) {
-            if (this.direction != "DEMI-T") {
+            if (!this.direction.equals("DEMI-T")) {
                 Position posLastSnake = new Position(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY());
                 grille[snake.get(snake.size() - 1).getY()][snake.get(snake.size() - 1).getX()] = 0;
                 for (int i = Constantes.TAILLE_SNAKE - 1; i > 0; i--) {
@@ -110,6 +110,7 @@ public class Serpent {
                 isApple(posLastSnake);
                 this.direction = direction;
             } else {
+                grille[snake.get(snake.size() - 1).getY()][snake.get(snake.size() - 1).getX()] = 1;
                 switch (direction){
                     case "UP":
                         this.direction = "DOWN";
@@ -126,9 +127,10 @@ public class Serpent {
                 }
             }
         } else {
+            grille[snake.get(snake.size() - 1).getY()][snake.get(snake.size() - 1).getX()] = 1;
             if (!estFini){
-                for (int i = 0; i < snake.size(); i++) {
-                    grille[snake.get(i).getY()][snake.get(i).getX()] = 4;
+                for (Position position : snake) {
+                    grille[position.getY()][position.getX()] = 4;
                 }
                 estFini = true;
             }
@@ -148,7 +150,7 @@ public class Serpent {
     public boolean future_position(String direction){
         switch (direction){
             case "UP":
-                if (this.direction == "DOWN"){
+                if (Objects.equals(this.direction, "DOWN")){
                     this.direction = "DEMI-T";
                     break;
                 }
@@ -157,7 +159,7 @@ public class Serpent {
                 }
                 break;
             case "DOWN":
-                if (this.direction == "UP"){
+                if (Objects.equals(this.direction, "UP")){
                     this.direction = "DEMI-T";
                     break;
                 }
@@ -166,7 +168,7 @@ public class Serpent {
                 }
                 break;
             case "LEFT":
-                if (this.direction == "RIGHT"){
+                if (Objects.equals(this.direction, "RIGHT")){
                     this.direction = "DEMI-T";
                     break;
                 }
@@ -175,7 +177,7 @@ public class Serpent {
                 }
                 break;
             case "RIGHT":
-                if (this.direction == "LEFT"){
+                if (Objects.equals(this.direction, "LEFT")){
                     this.direction = "DEMI-T";
                     break;
                 }
@@ -190,34 +192,34 @@ public class Serpent {
     }
 
     public String toString(){
-        String res = "";
+        StringBuilder res = new StringBuilder();
         boolean snake;
         Position pos;
         for (int i = 0; i < Constantes.NOMBRE_LIGNES; i++) {
             for (int j = 0; j < Constantes.NOMBRE_COLONNES; j++) {
                 pos = new Position(j,i);
                 snake = false;
-                for (int k = 0; k < this.snake.size(); k++) {
-                    if (pos.getX() == this.snake.get(k).getX() && pos.getY() == this.snake.get(k).getY()){
+                for (Position position : this.snake) {
+                    if (pos.getX() == position.getX() && pos.getY() == position.getY()) {
                         snake = true;
                         break;
                     }
                 }
                 if (snake){
-                    res+= "□";
+                    res.append("□");
                 } else {
-                    res+= ".";
+                    res.append(".");
                 }
             }
-            res+= "\n";
+            res.append("\n");
         }
-        return res;
+        return res.toString();
     }
 
     public void afficherGrille(){
-        for (int i = 0; i < grille.length; i++) {
-            for (int j = 0; j < grille[i].length; j++) {
-                System.out.print(grille[i][j] + " ");
+        for (int[] ints : grille) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
             }
             System.out.println();
         }

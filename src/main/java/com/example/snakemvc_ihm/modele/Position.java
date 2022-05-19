@@ -1,13 +1,10 @@
 package com.example.snakemvc_ihm.modele;
 
 import com.example.snakemvc_ihm.Constantes;
-import javafx.geometry.Pos;
 
 public class Position {
     private int x;
     private  int y;
-    private final int limiteX = Constantes.NOMBRE_COLONNES;
-    private final int limiteY = Constantes.NOMBRE_LIGNES;
 
     public int getX() {
         return x;
